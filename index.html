@@ -35,12 +35,6 @@
         body {
             background-color: #0f1115;
             color: #e2e8f0;
-            margin: 0;
-            padding: 2rem;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .carbon-border {
@@ -95,50 +89,50 @@
         }
     </style>
 </head>
-<body class="bg-carbon bg-auto-dark">
+<body class="bg-carbon bg-auto-dark min-h-screen flex items-center justify-center p-3 sm:p-6 md:p-8">
 
     <main class="w-full max-w-7xl carbon-border p-1 bg-auto-dark relative overflow-hidden">
         
         <!-- Decorative background elements -->
-        <div class="absolute top-4 left-4 text-auto-border opacity-20 text-6xl"><i class="fas fa-cog fa-spin" style="animation-duration: 10s;"></i></div>
-        <div class="absolute bottom-4 right-4 text-auto-border opacity-20 text-6xl"><i class="fas fa-piston"></i></div>
+        <div class="absolute top-4 left-4 text-auto-border opacity-20 text-4xl md:text-6xl"><i class="fas fa-cog fa-spin" style="animation-duration: 10s;"></i></div>
+        <div class="absolute bottom-4 right-4 text-auto-border opacity-20 text-4xl md:text-6xl"><i class="fas fa-piston"></i></div>
 
-        <div class="p-6 md:p-10 relative z-10">
+        <div class="p-4 sm:p-6 md:p-10 relative z-10">
             
-            <header class="mb-12 border-b-2 border-auto-orange pb-6">
-                <div class="grid grid-cols-[1fr_auto_1fr] items-center w-full gap-2 md:gap-4">
+            <header class="mb-8 md:mb-12 border-b-2 border-auto-orange pb-6 md:pb-8">
+                <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] items-center w-full gap-6 lg:gap-4">
                     
-                    <!-- Left Logo - Centered in remaining space -->
-                    <div class="flex items-center justify-center w-full h-full">
-                        <img src="logo - no bkgrd.png" alt="AutoQuest Logo left" class="h-16 md:h-24 lg:h-32 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,102,0,0.3)]">
+                    <!-- Left Logo - Centered on mobile, left on desktop -->
+                    <div class="flex items-center justify-center w-full h-full order-1 lg:order-none">
+                        <img src="logo - no bkgrd.png" alt="AutoQuest Logo left" class="h-20 sm:h-24 lg:h-32 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,102,0,0.3)]">
                     </div>
                     
                     <!-- Center Text Cluster -->
-                    <div class="flex flex-col items-center justify-center text-center">
-                        <h1 class="font-display text-4xl md:text-6xl font-bold uppercase tracking-wider mb-0 px-2 md:px-4 flex items-center justify-center">
+                    <div class="flex flex-col items-center justify-center text-center order-2 lg:order-none">
+                        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-wider mb-0 px-2 flex items-center justify-center">
                             <span class="text-auto-orange glow-text">AutoQuest</span>
                         </h1>
-                        <p class="text-sm md:text-base text-gray-400 font-semibold tracking-widest uppercase mt-2">By Global Nomads Ltd.</p>
+                        <p class="text-[10px] sm:text-xs md:text-sm text-gray-400 font-semibold tracking-widest uppercase mt-2">By Global Nomads Ltd.</p>
                         
                         <!-- Status Badge -->
-                        <div class="mt-6 inline-flex items-center gap-3 bg-auto-panel px-6 py-3 rounded-full border-2 border-auto-orange status-pulse">
-                            <i class="fab fa-android text-green-500 text-2xl"></i>
-                            <div class="text-left">
+                        <div class="mt-6 flex flex-col sm:flex-row items-center gap-2 sm:gap-3 bg-auto-panel px-4 sm:px-6 py-3 rounded-full border-2 border-auto-orange status-pulse text-center sm:text-left w-full sm:w-max mx-auto shadow-lg">
+                            <i class="fab fa-android text-green-500 text-3xl sm:text-2xl mb-1 sm:mb-0"></i>
+                            <div>
                                 <p class="font-bold text-white text-sm md:text-base leading-tight">Upcoming Soft-Launch on Android</p>
-                                <p class="text-xs text-gray-400">(Undergoing Final Amendments)</p>
+                                <p class="text-[10px] sm:text-xs text-gray-400 mt-1 sm:mt-0">(Undergoing Final Amendments)</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Right Logo - Centered in remaining space -->
-                    <div class="flex items-center justify-center w-full h-full">
-                        <img src="logo - no bkgrd.png" alt="AutoQuest Logo right" class="h-16 md:h-24 lg:h-32 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,102,0,0.3)]">
+                    <!-- Right Logo - Hidden on mobile, right on desktop -->
+                    <div class="hidden lg:flex items-center justify-center w-full h-full order-3 lg:order-none">
+                        <img src="logo - no bkgrd.png" alt="AutoQuest Logo right" class="h-20 sm:h-24 lg:h-32 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,102,0,0.3)]">
                     </div>
 
                 </div>
             </header>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6 lg:gap-8 mt-4 sm:mt-0">
                 
                 <!-- Pillar 1: News -->
                 <div class="bg-auto-panel rounded-xl p-6 border border-auto-border relative step-arrow hover:border-auto-orange transition-colors duration-300 flex flex-col">

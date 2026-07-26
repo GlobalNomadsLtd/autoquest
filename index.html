@@ -3,57 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoQuest</title>
+    <title>AutoQuest | Visual Aid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif'],
+                    },
+                    colors: {
+                        auto: {
+                            dark: '#1a1d24',    // Deep slate background
+                            panel: '#2d3748',   // Lighter panel background
+                            orange: '#ff6600',  // Accent orange
+                            light: '#e2e8f0',   // Light text
+                            border: '#4a5568'   // Subtle borders
+                        }
+                    },
+                    backgroundImage: {
+                        'carbon': 'repeating-linear-gradient(45deg, #1a1d24 0px, #1a1d24 10px, #22262e 10px, #22262e 20px)'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background-color: #f4f4f4;
+            background-color: #0f1115;
+            color: #e2e8f0;
+            margin: 0;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+        .carbon-border {
+            border: 4px solid #ff6600;
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.3), inset 0 0 20px rgba(0,0,0,0.8);
+            border-radius: 1.5rem;
+            background-image: var(--tw-gradient-stops);
         }
-        img {
-            max-width: 200px;
-            margin-bottom: 20px;
+
+        .glow-text {
+            text-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
         }
-        footer {
-            margin-top: 30px;
-            font-size: 0.8em;
+
+        .step-arrow {
+            position: relative;
         }
-        footer a {
-            margin: 0 10px;
-            color: #555;
-            text-decoration: none;
+        
+        /* Arrows between columns on desktop */
+        @media (min-width: 1024px) {
+            .step-arrow:not(:last-child)::after {
+                content: '\f30b';
+                font-family: 'Font Awesome 6 Free';
+                font-weight: 900;
+                position: absolute;
+                right: -2rem;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #ff6600;
+                font-size: 1.5rem;
+                opacity: 0.7;
+            }
         }
-        footer a:hover {
-            text-decoration: underline;
+
+        /* Float animation for icons */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        /* Pulse animation for the app status */
+        @keyframes pulse-border {
+            0% { border-color: rgba(255, 102, 0, 0.4); }
+            50% { border-color: rgba(255, 102, 0, 1); }
+            100% { border-color: rgba(255, 102, 0, 0.4); }
+        }
+        .status-pulse {
+            animation: pulse-border 2s infinite;
         }
     </style>
 </head>
-<body>
+<body class="bg-carbon bg-auto-dark">
 
-    <div class="container">
-        <img src="Logo.jpg" alt="AutoQuest Logo">
-        <h1>AutoQuest</h1>
-        <p><strong>Find; See & Collect</strong></p>
-
-        <div class="contact">
-            <p>Contact us: <a href="mailto:autoquest@globalnomads.co.uk">autoquest@globalnomads.co.uk</a></p>
-        </div>
+    <main class="w-full max-w-7xl carbon-border p-1 bg-auto-dark relative overflow-hidden">
         
-        <footer>
-            <a href="https://globalnomadsltd.github.io/autoquest/cookies/">Cookies</a> |
-            <a href="https://globalnomadsltd.github.io/autoquest/privacy/">Privacy</a> |
-            <a href="https://globalnomadsltd.github.io/autoquest/terms-and-conditions/">Terms and Conditions</a>
-        </footer>
-    </div>
+        <!-- Decorative background elements -->
+        <div class="absolute top-4 left-4 text-auto-border opacity-20 text-6xl"><i class="fas fa-cog fa-spin" style="animation-duration: 10s;"></i></div>
+        <div class="absolute bottom-4 right-4 text-auto-border opacity-20 text-6xl"><i class="fas fa-piston"></i></div>
+
+        <div class="p-6 md:p-10 relative z-10">
+            
+            <header class="text-center mb-12 border-b-2 border-auto-orange pb-6">
+                <div class="grid grid-cols-[1fr_auto_1fr] items-center w-full mb-2">
+                    <div class="flex justify-center">
+                        <img src="logo - no bkgrd.jpg" alt="AutoQuest Logo left" class="h-12 md:h-16 lg:h-20 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,102,0,0.3)]">
+                    </div>
+                    <h1 class="font-display text-4xl md:text-6xl font-bold uppercase tracking-wider mb-0 px-2 md:px-4 text-center">
+                        <span class="text-auto-orange glow-text">AutoQuest</span>
+                    </h1>
+                    <div class="flex justify-center">
+                        <img src="logo - no bkgrd.jpg" alt="AutoQuest Logo right" class="h-12 md:h-16 lg:h-20 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,102,0,0.3)]">
+                    </div>
+                </div>
+                <p class="text-sm md:text-base text-gray-400 font-semibold tracking-widest uppercase mt-2">By Global Nomads Ltd.</p>
+                
+                <!-- Status Badge -->
+                <div class="mt-6 inline-flex items-center gap-3 bg-auto-panel px-6 py-3 rounded-full border-2 border-auto-orange status-pulse">
+                    <i class="fab fa-android text-green-500 text-2xl"></i>
+                    <div class="text-left">
+                        <p class="font-bold text-white text-sm md:text-base leading-tight">Upcoming Soft-Launch on Android</p>
+                        <p class="text-xs text-gray-400">(Undergoing Final Amendments)</p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Pillar 1: News -->
+                <div class="bg-auto-panel rounded-xl p-6 border border-auto-border relative step-arrow hover:border-auto-orange transition-colors duration-300 flex flex-col">
+                    <div class="absolute -top-4 -left-4 w-10 h-10 bg-auto-orange rounded-full flex items-center justify-center font-display font-bold text-xl border-4 border-auto-dark text-white shadow-lg">1</div>
+                    
+                    <div class="h-32 flex items-center justify-center mb-6 animate-float">
+                        <i class="far fa-newspaper text-6xl text-white drop-shadow-md"></i>
+                        <i class="fas fa-car-side text-2xl text-auto-orange absolute ml-12 mt-12"></i>
+                    </div>
+                    
+                    <h2 class="font-display text-2xl font-bold text-auto-orange text-center mb-4 uppercase border-b border-auto-border pb-2">Auto News</h2>
+                    
+                    <div class="flex-grow">
+                        <h3 class="font-bold text-lg mb-2 text-white">Up-To-Date Automotive News.</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Keep your finger on the pulse of the industry. Get the latest trends, vehicle releases, and rumors delivered directly to you.</p>
+                    </div>
+                </div>
+
+                <!-- Pillar 2: Events -->
+                <div class="bg-auto-panel rounded-xl p-6 border border-auto-border relative step-arrow hover:border-auto-orange transition-colors duration-300 flex flex-col">
+                    <div class="absolute -top-4 -left-4 w-10 h-10 bg-auto-orange rounded-full flex items-center justify-center font-display font-bold text-xl border-4 border-auto-dark text-white shadow-lg">2</div>
+                    
+                    <div class="h-32 flex items-center justify-center mb-6 animate-float" style="animation-delay: 0.5s;">
+                        <div class="relative">
+                            <i class="fas fa-map-marked-alt text-6xl text-white"></i>
+                            <i class="fas fa-map-pin text-3xl text-auto-orange absolute -top-4 -right-4 drop-shadow-[0_0_8px_rgba(255,102,0,0.8)]"></i>
+                        </div>
+                    </div>
+                    
+                    <h2 class="font-display text-2xl font-bold text-auto-orange text-center mb-4 uppercase border-b border-auto-border pb-2">Events</h2>
+                    
+                    <div class="flex-grow">
+                        <h3 class="font-bold text-lg mb-2 text-white">Location- & Date-Based Events.</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Never miss a meet. Find car meets, rallies, shows, and ride-outs tailored to your specific area and interests.</p>
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Gamification -->
+                <div class="bg-auto-panel rounded-xl p-6 border border-auto-border relative step-arrow hover:border-auto-orange transition-colors duration-300 flex flex-col">
+                    <div class="absolute -top-4 -left-4 w-10 h-10 bg-auto-orange rounded-full flex items-center justify-center font-display font-bold text-xl border-4 border-auto-dark text-white shadow-lg">3</div>
+                    
+                    <div class="h-32 flex flex-col items-center justify-center mb-6 animate-float" style="animation-delay: 1s;">
+                        <i class="fas fa-trophy text-5xl text-yellow-500 mb-3 drop-shadow-md"></i>
+                        <!-- Progress bar mock -->
+                        <div class="w-3/4 h-3 bg-gray-700 rounded-full overflow-hidden border border-gray-600">
+                            <div class="w-2/3 h-full bg-auto-orange rounded-full"></div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="font-display text-2xl font-bold text-auto-orange text-center mb-4 uppercase border-b border-auto-border pb-2">Gamified Experience</h2>
+                    
+                    <div class="flex-grow">
+                        <h3 class="font-bold text-lg mb-2 text-white">Unique Gamified Challenge.</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Turning your hobby into a game.</p>
+                    </div>
+                </div>
+
+                <!-- Pillar 4: Partner Hub -->
+                <div class="bg-auto-panel rounded-xl p-6 border border-auto-orange relative shadow-[0_0_15px_rgba(255,102,0,0.2)] flex flex-col">
+                    <div class="absolute -top-4 -left-4 w-10 h-10 bg-auto-orange rounded-full flex items-center justify-center font-display font-bold text-xl border-4 border-auto-dark text-white shadow-lg">4</div>
+                    
+                    <div class="absolute top-2 right-2 flex space-x-1">
+                        <span class="bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded">PROMO</span>
+                        <span class="bg-yellow-500 text-black text-[10px] font-bold px-2 py-1 rounded">% OFF</span>
+                    </div>
+
+                    <div class="h-32 flex items-center justify-center mb-6 animate-float" style="animation-delay: 1.5s;">
+                        <i class="fas fa-store text-6xl text-white"></i>
+                        <i class="fas fa-tags text-2xl text-auto-orange absolute ml-16 mt-8"></i>
+                    </div>
+                    
+                    <h2 class="font-display text-2xl font-bold text-auto-orange text-center mb-4 uppercase border-b border-auto-border pb-2">Partner Hub</h2>
+                    
+                    <div class="flex-grow">
+                        <h3 class="font-bold text-lg mb-2 text-white">Dedicated Partner Hub.</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Our highly targeted audience can discover exclusive discounts, special offers, and direct product links from our preferred automotive brands.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <footer class="mt-12 pt-6 border-t border-auto-border flex flex-col md:flex-row justify-between items-center gap-6">
+                <!-- Enthusiast silhouettes (using font-awesome as stand-ins) -->
+                <div class="flex items-end gap-4 text-gray-500 text-4xl opacity-50">
+                    <i class="fas fa-car-side"></i>
+                    <i class="fas fa-motorcycle text-3xl"></i>
+                    <i class="fas fa-users text-2xl mb-1"></i>
+                </div>
+                
+                <div class="text-center md:text-right flex flex-col gap-2">
+                    <p class="font-display font-bold text-xl tracking-widest text-white uppercase">AutoQuest <span class="text-auto-orange">—</span> Engagement, Information, Community</p>
+                    
+                    <!-- Legal Links -->
+                    <div class="text-sm text-gray-400 mt-2">
+                        <a href="https://globalnomadsltd.github.io/autoquest/cookies/" class="hover:text-auto-orange transition-colors">Cookies</a> |
+                        <a href="https://globalnomadsltd.github.io/autoquest/privacy/" class="hover:text-auto-orange transition-colors">Privacy</a> |
+                        <a href="https://globalnomadsltd.github.io/autoquest/terms-and-conditions/" class="hover:text-auto-orange transition-colors">Terms and Conditions</a>
+                    </div>
+                    
+                    <!-- Contact Info -->
+                    <div class="text-sm text-gray-400">
+                        Contact us: <a href="mailto:autoquest@globalnomads.co.uk" class="hover:text-auto-orange transition-colors">autoquest@globalnomads.co.uk</a>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </main>
 
 </body>
 </html>
